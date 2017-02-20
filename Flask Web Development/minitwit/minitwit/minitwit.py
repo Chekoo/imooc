@@ -104,7 +104,7 @@ def user_timeline(username):   #用户个人资料页面，若不存在，返回
     return render_template('timeline.html', messages=query_db('''
             select message.*, user.* from message, user where
             user.user_id = message.author_id and user.user_id = ?
-            order by message.pub_date desc limit ?''',
+            order by message.pub_data desc limit ?''',
             [profile_user['user_id'], PER_PAGE]), followed=followed,
             profile_user=profile_user)
 
@@ -120,7 +120,7 @@ def follow_user(username): #用户的关注列表,提供了用户关注人的添
     db.execute('insert into follower (who_id, whom_id) values (?, ?)',
                [session['user_id'], whom_id])
     db.commit()
-    flash('You are now folling "%s"' % username)
+    flash('已关注"%s"' % username)
     return redirect(url_for('user_timeline', username=username))
 
 @app.route('/<username>/unfollow')
@@ -207,5 +207,6 @@ def logout():   #退出登录，从session查询对应的应用信息，并将�
 app.jinja_env.filters['datetimeformat'] = format_datetime
 app.jinja_env.filters['gravatar'] = gravatar_url
 
-if __name__ == "__main__":
+if __name__ == "__main__":   #执行此文件
+    init_db()  #初始化数据库
     app.run(debug=True)

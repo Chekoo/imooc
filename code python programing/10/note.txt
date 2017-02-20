@@ -1,0 +1,47 @@
+语法错误 逻辑错误
+
+异常:因为程序出现错误而在正常控制流之外采取的行为
+
+
+运行时，先尝试执行try块里的所有代码，异常发生，保存错误元音，控制流跳转到对应的处理器
+
+else子句
+finally子句:   无论如何都要执行
+try:
+    A
+except MyException:
+    B
+else:
+    C
+finally:
+    D
+
+
+try:
+    try_suite
+finally:
+    finally_suite    #无论如何都要执行
+
+
+with语句
+
+上下文管理协议
+
+
+raise语句,提供了一种机制让我们明确的出发异常
+raise[SomeException [, args [, traceback]]]
+SomeException是触发异常的名字，如果有，必须是一个字符串，类或者实例
+args可选(参数，值)来传给异常
+traceback可选的(很少用)
+
+断言   assert
+一句必须等价于布尔真的判定，发现异常意味着表达式为假
+
+
+3个直接从BaseException派生的异常子类：
+SystemExit, KeyboardInterrupt, Exception
+
+
+exc_type:异常类；
+exc_value：异常类的实例；
+exc_traceback：跟踪记录对象。

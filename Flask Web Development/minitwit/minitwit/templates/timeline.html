@@ -2,11 +2,11 @@
 <meta charset="UTF-8">
 {% block title %}
   {% if request.endpoint == 'public_timeline' %}
-    Public Timeline
+    公共时间线
   {% elif request.endpoint == 'user_timeline' %}
-    {{ profile_user.username }}'s Timeline
+    {{ profile_user.username }}的时间线
   {% else %}
-    My Timeline
+    我的时间线
   {% endif %}
 {% endblock %}
 {% block body %}
@@ -21,8 +21,8 @@
           <a class="unfollow" href="{{ url_for('unfollow_user', username=profile_user.username)
            }}">取消关注用户</a>.
         {% else %}
-          You are not yet following this user.
-          <a class="follow" herf="{{ url_for('follow_user', username=profile_user.username)
+          你尚未关注此用户
+          <a class="follow" href="{{ url_for('follow_user', username=profile_user.username)
            }}">关注用户</a>
         {% endif %}
         </div>

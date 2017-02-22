@@ -12,7 +12,7 @@ def timeit(func, *nkwargs, **kwargs):
 
 def test():
 	funcs = (int, long, float)
-	vals = （1234， 12.34，'1234', '12.34')
+	vals = （1234, 12.34,'1234', '12.34')
     
     for eachFunc in funcs:
     	print '_' * 20

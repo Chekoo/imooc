@@ -1,0 +1,72 @@
+Web客户端和服务器交互使用的语言，web交互的标准协议是HTTP，HTTP协议是TCP/IP协议的上层
+协议，意味着HTTP协议依靠着TCP/IP协议来进行低层的交流工作。它的指着不是路由或者传递消息(TCP/IP协议
+处理这些)，而是通过发送、接受HTTP消息来处理客户端的请求
+
+统一资源定位符(Uniform Resourece Locator),这个地址用来在web上定位一个文档，或者调用
+一个CGI程序来为你的客户端产生一个文档。
+URL是大型标识符URI（Uniform Resource Identifier)的一部分。
+Web地址结构：prot_sch://net_loc/path;params?query#frag
+
+Python提供了urlparse和urllib模块来处理URL
+
+urlparse
+urlparse(urlstr, defProtSch=None, allowFrag=None)
+urlparse()将urlstr解析成一个6元组
+需要多个相关的URL时，使用urljoin()功能，如在一个web页中生成一系列的URL
+urljoin(baseurl, newurl, allowFrag=None)
+
+urllib模块
+提供了在给定的URL地址下载数据的功能，同时也通过字符串的编码、解码来确保它们是有效URL字符串
+的一部分。
+urlopen()返回文件类型对象。
+urlopen(urlstr, postQueryData=None)
+urlopen()打开urlstr所指向的URL。如果没有给定协议或者下载规划，或者文件规划早已传入，urlopen()
+则会打开一个本地文件。
+
+对于所有的HTTP请求，常见请求类型是'GET',向web服务器发送的请求字符串应该是urlstr的一部分。
+如要使用‘POST’，请求的字符串(编码的)应该放到postQueryData变量中。
+一旦连接成功，返回一个文件类型对象。
+quote*()函数获取URL数据，并将其编码，从而适用于URL字符串中。尤其是一些不能被打印的或
+不被web服务器作为有效URL接收的特殊字符串必须被转换。这就是quote*()函数的功能。
+quote(urldata, safe='/')
+
+
+
+
+网络爬虫
+
+CGI:帮助web服务器处理客户端数据
+Web开发的最初目的是在全球范围内对文档进行存储和归档，这些信息通常产生于静态的文本或HTML
+HTML是一个文本格式而算不上是一种语言，它包括改变字体的类型、大小、风格。
+HTML主要特性在于它对超文本的兼容性,文本以某种高亮的形式指向另一个相关文档，可以通过鼠标点击或其他用户
+的选择机制来访问这类文档。这些静态的HTML文档在web服务器上，，在有请求时，将被送到客户端。
+
+CGI是一个适用于小型web网站开发的工具
+
+
+HTML头文件是从HTML中分离的
+
+CGI产生的第一个头信息指出内容类型(content-type)是HTTP
+
+目前，CGI特别指出只允许两种表单编码，'application/x-www-form-urlencoded'和
+'multipart/form-dat'
+
+在表单提交时候，数据从用户端以键-值对形式发送到服务器端。当提交不只一个复选框时，就会有
+多个值对应同一个键。CGI模块会建立一个这类实例的列表，就可以遍历获得所有的值。
+
+
+cookie
+服务器可以向客户端发送一个请求来保存cookie，而不必用在返回的web页面中嵌入数据的方法来保持数据
+cookie连接到最初的服务器的主域上，并且有一定的生存期限。
+
+建立web服务器
+
+基础的Web是一个必备的模具，它的角色是在客户端和服务器端完成必要HTTP交互。
+
+处理器是一些处理主要'web'服务器的简单软件。它处理客户端的请求，并返回适当额文件，
+静态 的文本或者由CGI生成的动态文件。处理器的复杂性决定了WEB服务器的复杂程度。
+
+BaseHTTPServer  提供基本的web服务 和处理器类，分别是HTTPServer和BaseHTTPRequestHandler
+SimpledHTTPServer 包含执行GET和HEAD请求
+CGIHTTPServer  包含处理POST请求和执行CGICGIHTTPRequestHandler类
+

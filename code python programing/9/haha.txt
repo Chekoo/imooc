@@ -1,2 +1,0 @@
-hello world
-sdfand i love python too

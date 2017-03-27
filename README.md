@@ -1,2 +1,1 @@
-# my-python
-人生苦短，我用Python.
+mooc的一些作业
